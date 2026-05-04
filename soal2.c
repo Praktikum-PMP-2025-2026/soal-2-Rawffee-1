@@ -42,13 +42,9 @@ int main (){
         scanf("%d", &crew[i].b);
     }
 
-    for (i = 0; i < N; i++) {
-        printf("%d ", kru[i].a);
-    }
+    qsort(kru, N, sizeof(gerbong), comp);
 
-    for (i = 0; i < M; i++) {
-        printf("%d ", crew[i].b);
-    }
+    printf("MERGED EMPTY");
 
     free(kru);
     return 0;
