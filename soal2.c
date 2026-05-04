@@ -45,6 +45,7 @@ int main (){
     qsort(kru, N, sizeof(gerbong), comp);
     qsort(crew, M, sizeof(gerobak), comp2);
 
+    printf("MERGED");
     for (i = 0; i < N; i++) {
         printf("%d ", kru[i].a);
     }
