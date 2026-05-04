@@ -14,7 +14,8 @@ typedef struct gerobak {
 int comp(const void *c, const void *d){
     gerbong *dataC = (gerbong *)c;
     gerbong *dataD = (gerbong *)d;
-    return(dataC->a - dataD->a);}
+    return(dataC->a - dataD->a);
+}
 
 int comp2(const void *e, const void *f){
     gerobak *dataE = (gerobak *)e;
@@ -24,41 +25,43 @@ int comp2(const void *e, const void *f){
 
 int main (){
     int i, N, M;
-    gerbong *kru;
-    scanf("%d", &N);
+    gerbong *kru = NULL;
+    gerobak *crew = NULL;
 
-    kru = (gerbong*) malloc(N * sizeof(gerbong));
+    if (scanf("%d", &N) != 1 || N <= 0) {
 
-    for (i = 0; i < N; i++) {
-        scanf("%d", &kru[i].a);
-    }
-
-    gerobak *crew;
-    scanf("%d", &M);
-
-    crew = (gerobak*) malloc(M * sizeof(gerobak));
-
-    for (i = 0; i < M; i++) {
-        scanf("%d", &crew[i].b);
-    }
-
-    qsort(kru, N, sizeof(gerbong), comp);
-    qsort(crew, M, sizeof(gerobak), comp2);
-
-    if (kru == NULL && crew == NULL) {
-        printf("MERGED EMPTY");
-    } 
-     else {
+    } else {
+        kru = (gerbong*) malloc(N * sizeof(gerbong));
         for (i = 0; i < N; i++) {
-        printf("%d ", kru[i].a);
+            scanf("%d", &kru[i].a);
         }
-
-    for (i = 0; i < M; i++) {
-        printf("%d ", crew[i].b);
-        }
+        qsort(kru, N, sizeof(gerbong), comp);
     }
 
-    free(kru);
-    free(crew);
+    if (scanf("%d", &M) != 1 || M <= 0) {
+
+    } else {
+        crew = (gerobak*) malloc(M * sizeof(gerobak));
+        for (i = 0; i < M; i++) {
+            scanf("%d", &crew[i].b);
+        }
+        qsort(crew, M, sizeof(gerobak), comp2);
+    }
+
+    if (kru == NULL && crew==NULL) {
+        printf("MERGED EMPTY");
+    } else {
+        for (i = 0; i < N; i++) {
+            printf("%d ", kru[i].a);
+        }
+        for (i = 0; i < M; i++) {
+            printf("%d ", crew[i].b);
+        }
+    }
+    printf("\n");
+
+    if (kru != NULL) free(kru);
+    if (crew != NULL) free(crew);
+
     return 0;
 }
