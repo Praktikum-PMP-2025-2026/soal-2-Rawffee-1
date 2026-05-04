@@ -43,9 +43,17 @@ int main (){
     }
 
     qsort(kru, N, sizeof(gerbong), comp);
+    qsort(crew, M, sizeof(gerobak), comp2);
 
-    printf("MERGED EMPTY");
+    for (i = 0; i < N; i++) {
+        printf("%d ", kru[i].a);
+    }
+
+    for (i = 0; i < M; i++) {
+        printf("%d ", crew[i].b);
+    }
 
     free(kru);
+    free(crew);
     return 0;
 }
